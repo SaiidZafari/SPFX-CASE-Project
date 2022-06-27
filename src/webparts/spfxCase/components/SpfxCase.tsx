@@ -2,44 +2,14 @@
 import * as React from "react";
 import { FunctionComponent, useState } from "react";
 import styles from "./SpfxCase.module.scss";
-import { ISpfxCaseProps } from "./ISpfxCaseProps";
+import { ISpfxCaseProps,ISPCarList,ISPCarLists, ISPEmployeeLists, ISPEmployeeList, ISPSaleLists, ISPSaleList } from "./ISpfxCaseProps";
 import { PrimaryButton } from "@fluentui/react";
+import { SharedColors } from "@fluentui/theme";
 import Employees from "./Employees/Employees";
 
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 import Cars from "./Cars/Cars";
 import Sales from "./Sales/Sales";
-
-export interface ISPEmployeeLists {
-  value: ISPEmployeeList[];
-}
-
-export interface ISPEmployeeList {
-  Title: number;
-  name: string;
-}
-
-export interface ISPCarLists {
-  value: ISPCarList[];
-}
-
-export interface ISPCarList {
-  Title: number;
-  brand: string;
-  model: string;
-  price: number;
-}
-
-export interface ISPSaleLists {
-  value: ISPSaleList[];
-}
-
-export interface ISPSaleList {
-  Title: number;
-  carmodel_id: number;
-  employee_id: number;
-}
-
 
 // import { escape } from '@microsoft/sp-lodash-subset';
 
@@ -125,7 +95,7 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
  
 
   React.useEffect(() => {
-    if (!nav) setNav("Cars");
+    if (!nav) setNav("Carmodels");
 
     renderListAsync();
   }, [nav]);
@@ -144,25 +114,36 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
           }
           className={styles.welcomeImage}
         />
-        <h1>Car Dealership</h1>
+        <h1 style={{ color: SharedColors.red20 }}>Car Dealership</h1>
         <div className={styles.btnAllBox}>
           <div className={styles.btnBox}>
-            <PrimaryButton onClick={() => setNav("Cars")}>Cars</PrimaryButton>
+            <PrimaryButton
+              onClick={() => setNav("Carmodels")}
+              style={{ backgroundColor: SharedColors.cyanBlue10 }}
+            >
+              Cars
+            </PrimaryButton>
           </div>
           <div className={styles.btnBox}>
-            <PrimaryButton onClick={() => setNav("Employees")}>
+            <PrimaryButton
+              onClick={() => setNav("Employees")}
+              style={{ backgroundColor: SharedColors.cyanBlue10 }}
+            >
               Employees
             </PrimaryButton>
           </div>
           <div className={styles.btnBox}>
-            <PrimaryButton onClick={() => setNav("Sales")}>Sales</PrimaryButton>
+            <PrimaryButton
+              onClick={() => setNav("Sales")}
+              style={{ backgroundColor: SharedColors.cyanBlue10 }}
+            >
+              Sales
+            </PrimaryButton>
           </div>
         </div>
       </div>
 
-      {
-        nav === "Cars" ?
-          (
+      {nav === "Carmodels" ? (
         <Cars
           isDarkTheme={isDarkTheme}
           hasTeamsContext={false}
