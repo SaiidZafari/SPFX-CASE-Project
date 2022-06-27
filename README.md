@@ -2,7 +2,10 @@
 
 ## Summary
 
-Short summary on functionality and used technologies.
+This project was created using Stop to use modern React.
+Pages are created using Function instead of Class.
+Data enters programs through SharePoint lists with code.
+With this stop, it helps to shorten the code and also makes it possible to use hooks like useState or useEffect.
 
 [picture of the solution in action, if possible]
 
