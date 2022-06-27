@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.0",
+    "libraryName": "spfx-case-project",
+    "libraryId": "dd97c141-ea34-4fbf-a607-035b49ef4bb2",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-case-project",
+    "solutionShortDescription": "spfx-case-project description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

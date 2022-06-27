@@ -1,0 +1,126 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.spfxCase {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcome h1 {
+  font-size: 3em;
+}
+
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.welcomeImageEmp {
+  width: 100%;
+  max-width: 220px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+.list {
+  color: #333333;
+  font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  box-sizing: border-box;
+  margin: 10;
+  padding: 10;
+  line-height: 50px;
+  list-style-type: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.listItem {
+  color: #333333;
+  vertical-align: center;
+  font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  *zoom: 1;
+  padding: 9px 28px 3px;
+  position: relative;
+}
+
+.theEmployee{
+  // display:flex;
+  // width: 12vw;
+  border: 2px solid black;
+  border-radius: 5px;
+  justify-content: space-between;
+  margin-bottom: 1%;
+  padding: 1%;
+}
+
+.theEmployees{
+  // display: flex;
+  // border: 2px solid red;
+   justify-content: space-between;
+   
+}
+
+.theEmployeesEmp{
+   display: flex;
+  // border: 2px solid red;
+   justify-content: space-between;
+   font-size: 0.7em;
+   text-align:center;
+}
+
+.theCarBox{
+  // display:flex;
+  justify-content: space-between;
+  // margin: 2%;
+  // border: 2px solid red;
+}
+
+.theCar{
+ display:flex;
+  // width: 15vw;
+  margin-bottom: 1%;
+  padding: 1%;
+  border: 2px solid grey;
+  border-radius: 5px;
+  justify-content: space-between;
+  background-color: lightgray;
+}
+
+.btnAllBox {
+ display: flex;
+ justify-content: center;
+}
+
+.btnBox {
+ margin:1%;
+ border-radius: 10px;
+ overflow: hidden;
+}
