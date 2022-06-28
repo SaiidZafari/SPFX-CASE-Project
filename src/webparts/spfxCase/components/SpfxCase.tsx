@@ -2,7 +2,7 @@
 import * as React from "react";
 import { FunctionComponent, useState } from "react";
 import styles from "./SpfxCase.module.scss";
-import { ISpfxCaseProps,ISPCarList,ISPCarLists, ISPEmployeeLists, ISPEmployeeList, ISPSaleLists, ISPSaleList } from "./ISpfxCaseProps";
+import { ISpfxCaseProps,ISPCarLists, ISPEmployeeLists, ISPSaleLists } from "./ISpfxCaseProps";
 import { PrimaryButton } from "@fluentui/react";
 import { SharedColors } from "@fluentui/theme";
 import Employees from "./Employees/Employees";
@@ -10,8 +10,6 @@ import Employees from "./Employees/Employees";
 import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 import Cars from "./Cars/Cars";
 import Sales from "./Sales/Sales";
-
-// import { escape } from '@microsoft/sp-lodash-subset';
 
 const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
   const {
@@ -40,9 +38,6 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
        });
    };
 
-   const _renderSalesList = (items: ISPSaleList[]): void => {
-     setSales(items);
-   };
 
   const _getCarsListData = (): Promise<ISPCarLists> => {
     return context.spHttpClient
@@ -54,10 +49,6 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
       .then((response: SPHttpClientResponse) => {
         return response.json();
       });
-  };
-
-  const _renderCarsList = (items: ISPCarList[]): void => {
-    setCars(items);
   };
 
  
@@ -73,31 +64,19 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
       });
   };
 
-  const _renderEmployeesList = (items: ISPEmployeeList[]): void => {
-    setEmployees(items);
-  };
-
-  const renderListAsync = (): void => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    _getEmployeesListData().then((response) => {
-      _renderEmployeesList(response.value);
-    });
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    _getCarsListData().then((response) => {
-      _renderCarsList(response.value);
-    });
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    _getSalesListData().then((response) => {
-      _renderSalesList(response.value);
-    });
-  };
-
  
 
   React.useEffect(() => {
     if (!nav) setNav("Carmodels");
 
-    renderListAsync();
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    _getSalesListData().then((response) => setSales(response.value));
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    _getCarsListData().then((response) => setCars(response.value));
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    _getEmployeesListData().then((response) => setEmployees(response.value));
+
+    //renderListAsync();
   }, [nav]);
 
   return (

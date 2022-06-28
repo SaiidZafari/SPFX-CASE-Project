@@ -11,7 +11,7 @@ const Cars: FunctionComponent<ISpfxCaseProps> = (props) => {
           props.hasTeamsContext ? styles.teams : ""
         }`}
       >
-        <h2>Cars</h2>
+        <h2>Carmodels</h2>
 
         <div className={styles.theEmployees}>
           <div className={styles.theCarBox}>
