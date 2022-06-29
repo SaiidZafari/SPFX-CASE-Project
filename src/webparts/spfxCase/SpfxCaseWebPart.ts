@@ -33,7 +33,8 @@ export default class SpfxCaseWebPart extends BaseClientSideWebPart<ISpfxCaseWebP
         context: this.context,
         employees: [],
         cars: [],
-        sales: []
+        sales: [],
+        siteUrl: this.context.pageContext.web.absoluteUrl
       }
     );
 

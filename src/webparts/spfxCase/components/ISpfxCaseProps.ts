@@ -10,10 +10,12 @@ export interface ISpfxCaseProps {
   employees: ISPEmployeeList[];
   cars: ISPCarList[];
   sales: ISPSaleList[];
+  siteUrl: string;
 }
 
 export interface ISPEmployeeLists {
   value: ISPEmployeeList[];
+  context: WebPartContext;
 }
 
 export interface ISPEmployeeList {
@@ -23,6 +25,7 @@ export interface ISPEmployeeList {
 
 export interface ISPCarLists {
   value: ISPCarList[];
+  context: WebPartContext;
 }
 
 export interface ISPCarList {
@@ -34,7 +37,7 @@ export interface ISPCarList {
 
 export interface ISPSaleLists {
   value: ISPSaleList[];
-  
+  context: WebPartContext;
 }
 
 export interface ISPSaleList {

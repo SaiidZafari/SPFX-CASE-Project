@@ -2,12 +2,16 @@
 import * as React from "react";
 import { FunctionComponent, useState } from "react";
 import styles from "./SpfxCase.module.scss";
-import { ISpfxCaseProps,ISPCarLists, ISPEmployeeLists, ISPSaleLists } from "./ISpfxCaseProps";
+import { ISpfxCaseProps } from "./ISpfxCaseProps";
 import { PrimaryButton } from "@fluentui/react";
 import { SharedColors } from "@fluentui/theme";
 import Employees from "./Employees/Employees";
+import {
+  _getSalesListData,
+  _getEmployeesListData,
+  _getCarsListData,
+} from "./DataBase/GetData";
 
-import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 import Cars from "./Cars/Cars";
 import Sales from "./Sales/Sales";
 
@@ -19,6 +23,7 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
     hasTeamsContext,
     userDisplayName,
     context,
+    siteUrl
   } = props;
 
   const [nav, setNav] = useState("");
@@ -26,57 +31,17 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
   const [cars, setCars] = useState([]);
   const [sales, setSales] = useState([]);
 
-   const _getSalesListData = (): Promise<ISPSaleLists> => {
-     return context.spHttpClient
-       .get(
-         context.pageContext.web.absoluteUrl +
-           `/_api/web/lists/getbytitle('Sales')/Items`,
-         SPHttpClient.configurations.v1
-       )
-       .then((response: SPHttpClientResponse) => {
-         return response.json();
-       });
-   };
-
-
-  const _getCarsListData = (): Promise<ISPCarLists> => {
-    return context.spHttpClient
-      .get(
-        context.pageContext.web.absoluteUrl +
-          `/_api/web/lists/getbytitle('Carmodels')/Items`,
-        SPHttpClient.configurations.v1
-      )
-      .then((response: SPHttpClientResponse) => {
-        return response.json();
-      });
-  };
-
  
-  const _getEmployeesListData = (): Promise<ISPEmployeeLists> => {
-    return context.spHttpClient
-      .get(
-        context.pageContext.web.absoluteUrl +
-          `/_api/web/lists/getbytitle('Employees')/Items`,
-        SPHttpClient.configurations.v1
-      )
-      .then((response: SPHttpClientResponse) => {
-        return response.json();
-      });
-  };
-
- 
-
   React.useEffect(() => {
     if (!nav) setNav("Carmodels");
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    _getSalesListData().then((response) => setSales(response.value));
+    _getSalesListData(context).then((response) => setSales(response.value));
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    _getCarsListData().then((response) => setCars(response.value));
+    _getCarsListData(context).then((response) => setCars(response.value));
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    _getEmployeesListData().then((response) => setEmployees(response.value));
+    _getEmployeesListData(context).then((response) =>setEmployees(response.value));
 
-    //renderListAsync();
   }, [nav]);
 
   return (
@@ -133,6 +98,7 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
           employees={employees}
           cars={cars}
           sales={sales}
+          siteUrl={siteUrl}
         />
       ) : nav === "Sales" ? (
         <Sales
@@ -145,6 +111,7 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
           employees={employees}
           cars={cars}
           sales={sales}
+          siteUrl={siteUrl}
         />
       ) : (
         <Employees
@@ -157,6 +124,7 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
           employees={employees}
           cars={cars}
           sales={sales}
+          siteUrl={siteUrl}
         />
       )}
     </section>
