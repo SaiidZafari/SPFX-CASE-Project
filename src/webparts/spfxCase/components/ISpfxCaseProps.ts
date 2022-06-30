@@ -1,4 +1,7 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
+import * as React from "react";
+
+
 
 export interface ISpfxCaseProps {
   description: string;
@@ -11,6 +14,11 @@ export interface ISpfxCaseProps {
   cars: ISPCarList[];
   sales: ISPSaleList[];
   siteUrl: string;
+  employeeId: string;
+  employeeName: string;
+  isVisible: boolean;
+  setEmployeeName: React.Dispatch<React.SetStateAction<string>>;
+  
 }
 
 export interface ISPEmployeeLists {
@@ -19,7 +27,7 @@ export interface ISPEmployeeLists {
 }
 
 export interface ISPEmployeeList {
-  Title: number;
+  Title: string;
   name: string;
 }
 
@@ -29,7 +37,7 @@ export interface ISPCarLists {
 }
 
 export interface ISPCarList {
-  Title: number;
+  Title: string;
   brand: string;
   model: string;
   price: number;

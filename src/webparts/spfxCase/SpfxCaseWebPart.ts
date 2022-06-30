@@ -16,6 +16,7 @@ export interface ISpfxCaseWebPartProps {
   description: string;
 }
 
+
 export default class SpfxCaseWebPart extends BaseClientSideWebPart<ISpfxCaseWebPartProps> {
 
   private _isDarkTheme: boolean = false;
@@ -34,7 +35,11 @@ export default class SpfxCaseWebPart extends BaseClientSideWebPart<ISpfxCaseWebP
         employees: [],
         cars: [],
         sales: [],
-        siteUrl: this.context.pageContext.web.absoluteUrl
+        siteUrl: this.context.pageContext.web.absoluteUrl,
+        employeeId: "",
+        employeeName: "",
+        isVisible: false,
+        setEmployeeName: React.useState
       }
     );
 

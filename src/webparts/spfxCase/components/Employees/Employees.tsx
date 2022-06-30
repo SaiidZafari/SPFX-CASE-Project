@@ -5,6 +5,7 @@ import styles from "../SpfxCase.module.scss";
 import { ISpfxCaseProps } from "../ISpfxCaseProps";
 import { IconButton } from '@fluentui/react/lib/Button';
 import { SharedColors } from '@fluentui/theme';
+import EmployeesForm from "./EmployeesForm";
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -16,12 +17,26 @@ export interface IButtonExampleProps {
 const Employees: FunctionComponent<ISpfxCaseProps> = (props) => {
 
   const [employees, setEmployees] = useState(props.employees);
+
+  // const [employeeId, setEmployeeId] = useState("");
+  const [employeeName, setEmployeeName] = useState("");
+  const [isVisible, setIsVisible]  = useState(false);
+  
   
   const handleDelete = (employee): void => {
     // eslint-disable-next-line @typescript-eslint/typedef
     const newEmployees  = employees.filter((emp) => employee.name !== emp.name);
     setEmployees(newEmployees);
   };
+
+  const handleEdit = (employee): void => {
+    
+    setIsVisible(!isVisible);
+    // setEmployeeId(employee.Title);
+    setEmployeeName(employee.name);
+  };
+
+
 
     return (
       <section
@@ -57,9 +72,29 @@ const Employees: FunctionComponent<ISpfxCaseProps> = (props) => {
                 <IconButton
                   iconProps={{ iconName: "Edit" }}
                   style={{ color: SharedColors.green20 }}
+                  // eslint-disable-next-line react/jsx-no-bind
+                  onClick={() => handleEdit(employee)}
                 >
                   Edit
                 </IconButton>
+              </div>
+              <div>
+                <EmployeesForm
+                  description={""}
+                  isDarkTheme={false}
+                  environmentMessage={""}
+                  hasTeamsContext={false}
+                  userDisplayName={""}
+                  context={props.context}
+                  employees={[]}
+                  cars={[]}
+                  sales={[]}
+                  siteUrl={""}
+                  employeeId={employee.Title}
+                  employeeName={employeeName}
+                  isVisible={isVisible}
+                  setEmployeeName={setEmployeeName}
+                />
               </div>
             </div>
           ))}

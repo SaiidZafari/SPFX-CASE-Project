@@ -92,6 +92,7 @@
 .theEmployeesEmp{
    display: flex;
   // border: 2px solid red;
+   flex-wrap:wrap;
    justify-content: space-between;
    font-size: 0.7em;
    text-align:center;
@@ -143,4 +144,17 @@
 .crudEmployeeBtn{
   display: flex;
   justify-content: space-between;
+}
+
+.empForm label{
+  flex-direction: column;
+  margin: 1%;
+}
+
+.empForm button{
+  margin: 1%;
+  width: 80%;
+  background-color:darkgreen;
+  border-radius: 5px;
+  color: white;
 }

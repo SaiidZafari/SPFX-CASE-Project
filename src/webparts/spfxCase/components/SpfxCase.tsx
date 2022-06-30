@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from "react";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useState, SetStateAction } from "react";
 import styles from "./SpfxCase.module.scss";
 import { ISpfxCaseProps } from "./ISpfxCaseProps";
 import { PrimaryButton } from "@fluentui/react";
@@ -98,34 +98,37 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
           employees={employees}
           cars={cars}
           sales={sales}
-          siteUrl={siteUrl}
-        />
+          siteUrl={siteUrl} employeeId={""} employeeName={""} isVisible={false} setEmployeeName={function (value: SetStateAction<string>): void {
+            throw new Error("Function not implemented.");
+          } }        />
       ) : nav === "Sales" ? (
         <Sales
-          isDarkTheme={isDarkTheme}
-          hasTeamsContext={false}
-          context={context}
-          environmentMessage={environmentMessage}
-          description={description}
-          userDisplayName={userDisplayName}
-          employees={employees}
-          cars={cars}
-          sales={sales}
-          siteUrl={siteUrl}
-        />
+            isDarkTheme={isDarkTheme}
+            hasTeamsContext={false}
+            context={context}
+            environmentMessage={environmentMessage}
+            description={description}
+            userDisplayName={userDisplayName}
+            employees={employees}
+            cars={cars}
+            sales={sales}
+            siteUrl={siteUrl} employeeId={""} employeeName={""} isVisible={false} setEmployeeName={function (value: SetStateAction<string>): void {
+              throw new Error("Function not implemented.");
+            } }        />
       ) : (
         <Employees
-          isDarkTheme={isDarkTheme}
-          hasTeamsContext={false}
-          context={context}
-          environmentMessage={environmentMessage}
-          description={description}
-          userDisplayName={userDisplayName}
-          employees={employees}
-          cars={cars}
-          sales={sales}
-          siteUrl={siteUrl}
-        />
+              isDarkTheme={isDarkTheme}
+              hasTeamsContext={false}
+              context={context}
+              environmentMessage={environmentMessage}
+              description={description}
+              userDisplayName={userDisplayName}
+              employees={employees}
+              cars={cars}
+              sales={sales}
+              siteUrl={siteUrl} employeeId={""} employeeName={""} isVisible={false} setEmployeeName={function (value: SetStateAction<string>): void {
+                throw new Error("Function not implemented.");
+              } }        />
       )}
     </section>
   );
