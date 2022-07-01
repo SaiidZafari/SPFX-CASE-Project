@@ -20,23 +20,29 @@ const Employees: FunctionComponent<ISpfxCaseProps> = (props) => {
 
   // const [employeeId, setEmployeeId] = useState("");
   const [employeeName, setEmployeeName] = useState("");
-  const [isVisible, setIsVisible]  = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  
+  const [editIcon, setEditIcon] = useState("Edit");
+  const [editIconColor, setEditIconColor] = useState(SharedColors.green20);
   
   
   const handleDelete = (employee): void => {
     // eslint-disable-next-line @typescript-eslint/typedef
     const newEmployees  = employees.filter((emp) => employee.name !== emp.name);
     setEmployees(newEmployees);
+    
   };
 
   const handleEdit = (employee): void => {
-    
+    // eslint-disable-next-line no-unused-expressions
+    editIcon === "Edit"
+      ? (setEditIcon("Cancel"), setEditIconColor(SharedColors.red20))
+      : (setEditIcon("Edit"), setEditIconColor(SharedColors.green20));
+ 
     setIsVisible(!isVisible);
     // setEmployeeId(employee.Title);
     setEmployeeName(employee.name);
   };
-
-
 
     return (
       <section
@@ -70,8 +76,8 @@ const Employees: FunctionComponent<ISpfxCaseProps> = (props) => {
                   </IconButton>
                 </div>
                 <IconButton
-                  iconProps={{ iconName: "Edit" }}
-                  style={{ color: SharedColors.green20 }}
+                  iconProps={{ iconName: editIcon }}
+                  style={{ color: editIconColor }}
                   // eslint-disable-next-line react/jsx-no-bind
                   onClick={() => handleEdit(employee)}
                 >

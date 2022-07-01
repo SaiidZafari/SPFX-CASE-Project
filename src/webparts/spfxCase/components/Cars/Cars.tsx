@@ -5,6 +5,7 @@ import styles from "../SpfxCase.module.scss";
 import { ISpfxCaseProps } from "../ISpfxCaseProps";
 import { IconButton } from '@fluentui/react/lib/Button';
 import { SharedColors } from '@fluentui/theme';
+import { SpinnerBasicExample } from "./SpinnerBasicExample";
 
 
 
@@ -28,7 +29,12 @@ const Cars: FunctionComponent<ISpfxCaseProps> = (props) => {
     }
   }, [carModels.length, cars]);
 
-    return (
+  const loadCars = (): void => {
+    // eslint-disable-next-line no-unused-expressions
+    carModels.length < 1 ? <SpinnerBasicExample /> : ""
+  }
+
+    return  (
       <section
         className={`${styles.spfxCase} ${
           props.hasTeamsContext ? styles.teams : ""
@@ -38,35 +44,34 @@ const Cars: FunctionComponent<ISpfxCaseProps> = (props) => {
 
         <div className={styles.theEmployees}>
           <div className={styles.theCarBox}>
-            {(carModels.length > 0 ? carModels : cars).map(
-              (car, index) => (
-                <div key={index}>
-                  <div className={styles.theCar}>
-                    <h3>{car.brand}</h3>
-                    <h3>{car.model}</h3>
-                    <h3>{car.price} kr.</h3>
-                    <div className={styles.crudCarBtn}>
-                      <div>
-                        <IconButton
-                          iconProps={{ iconName: "Delete" }}
-                          style={{ color: SharedColors.red20 }}
-                          // eslint-disable-next-line react/jsx-no-bind
-                          onClick={() => handleDelete(car)}
-                        >
-                          Delete
-                        </IconButton>
-                      </div>
+            {/* {(carModels.length > 0 ? carModels : cars).map( */}
+            {carModels.map((car, index) => (
+              <div key={index}>
+                <div className={styles.theCar}>
+                  <h3>{car.brand}</h3>
+                  <h3>{car.model}</h3>
+                  <h3>{car.price} kr.</h3>
+                  <div className={styles.crudCarBtn}>
+                    <div>
                       <IconButton
-                        iconProps={{ iconName: "Edit" }}
-                        style={{ color: SharedColors.green20 }}
+                        iconProps={{ iconName: "Delete" }}
+                        style={{ color: SharedColors.red20 }}
+                        // eslint-disable-next-line react/jsx-no-bind
+                        onClick={() => handleDelete(car)}
                       >
-                        Edit
+                        Delete
                       </IconButton>
                     </div>
+                    <IconButton
+                      iconProps={{ iconName: "Edit" }}
+                      style={{ color: SharedColors.green20 }}
+                    >
+                      Edit
+                    </IconButton>
                   </div>
                 </div>
-              )
-            )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
