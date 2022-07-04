@@ -36,10 +36,11 @@ export default class SpfxCaseWebPart extends BaseClientSideWebPart<ISpfxCaseWebP
         cars: [],
         sales: [],
         siteUrl: this.context.pageContext.web.absoluteUrl,
-        employeeId: "",
+        employeeId: 0,
         employeeName: "",
         isVisible: false,
-        setEmployeeName: React.useState
+        setEmployeeName: React.useState,
+        employeeIdTitle: ""
       }
     );
 

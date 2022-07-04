@@ -158,3 +158,42 @@
   border-radius: 5px;
   color: white;
 }
+
+.addEmpForm{
+  display: flex;
+  padding: 1%;
+  width: 98%;
+  background-color: $ms-color-sharedRed20;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 1%;
+}
+
+.addEmpForm button{
+ margin: 1%;
+ padding: 1%;
+ border-radius: 5px;
+ width : 30%;
+ text-align:center;
+ font-size:1.2em;
+}
+
+.addEmpForm form{
+ display: flex;
+ 
+}
+
+.addEmpForm label{
+ font-size:1.2em;
+}
+
+.addInput{
+ width: 30vw;
+ border-radius: 5px;
+ margin: 0 1%;
+ font-size:1.2em;
+}
+
+.btnSubmit{
+  width: 30vw;
+}

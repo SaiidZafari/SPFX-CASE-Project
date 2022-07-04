@@ -5,7 +5,7 @@ import styles from "../SpfxCase.module.scss";
 import { ISpfxCaseProps } from "../ISpfxCaseProps";
 import { IconButton } from '@fluentui/react/lib/Button';
 import { SharedColors } from '@fluentui/theme';
-import { SpinnerBasicExample } from "./SpinnerBasicExample";
+// import { SpinnerBasicExample } from "./SpinnerBasicExample";
 
 
 
@@ -29,10 +29,10 @@ const Cars: FunctionComponent<ISpfxCaseProps> = (props) => {
     }
   }, [carModels.length, cars]);
 
-  const loadCars = (): void => {
-    // eslint-disable-next-line no-unused-expressions
-    carModels.length < 1 ? <SpinnerBasicExample /> : ""
-  }
+  // const loadCars = () => {
+  //   // eslint-disable-next-line no-unused-expressions
+  //   carModels.length < 1 ? <SpinnerBasicExample /> : ""
+  // }
 
     return  (
       <section

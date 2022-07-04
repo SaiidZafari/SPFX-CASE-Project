@@ -20,13 +20,13 @@ const Sales: FunctionComponent<ISpfxCaseProps> = (props) => {
               {sales.map((sale) =>
                 cars.map((car) =>
                   car.Title.toString() === sale.carmodel_id.toString() &&
-                  employee.Title.toString() === sale.employee_id.toString() ? (
+                  (employee.Id-4).toString() === sale.employee_id.toString() ? (
                     <div>
                       <div className={styles.theCar} key={car.brand}>
                         <h3>{car.brand}</h3>
                         <h3>{car.model}</h3>
                         <h3>{car.price} kr.</h3>
-                      </div>                      
+                      </div>
                     </div>
                   ) : (
                     ""

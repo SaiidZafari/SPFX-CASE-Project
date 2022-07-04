@@ -14,11 +14,11 @@ export interface ISpfxCaseProps {
   cars: ISPCarList[];
   sales: ISPSaleList[];
   siteUrl: string;
-  employeeId: string;
+  employeeId: number;
   employeeName: string;
   isVisible: boolean;
+  employeeIdTitle: "";
   setEmployeeName: React.Dispatch<React.SetStateAction<string>>;
-  
 }
 
 export interface ISPEmployeeLists {
@@ -28,6 +28,9 @@ export interface ISPEmployeeLists {
 
 export interface ISPEmployeeList {
   Title: string;
+  Id: number;
+  odata: [];
+  ID: number;
   name: string;
 }
 
