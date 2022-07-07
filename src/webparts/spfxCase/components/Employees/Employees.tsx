@@ -27,7 +27,7 @@ export interface IButtonExampleProps {
 const Employees: FunctionComponent<ISpfxCaseProps> = (props) => {
   const [employees, setEmployees] = useState(props.employees);
 
-  const [employeeId, setEmployeeId] = useState(0);
+  // const [employeeId, setEmployeeId] = useState(0);
   // const [employeeIdTitle, setEmployeeIdTitle] = useState("")
   const [employeeName, setEmployeeName] = useState("");
   const [isVisible, setIsVisible] = useState(false);
@@ -36,12 +36,12 @@ const Employees: FunctionComponent<ISpfxCaseProps> = (props) => {
   const [editIcon, setEditIcon] = useState("Edit");
   const [editIconColor, setEditIconColor] = useState(SharedColors.green20);
 
-   const fetchEmployeesData = async () => {
+   const fetchEmployeesData = async (): Promise<void> => {
      const allItems = await sp.web.lists.getByTitle("Employees").items.getAll();
      setEmployees(allItems);
    };
   
-  const deleteEmployee = (employeeId) => {
+  const deleteEmployee = (employeeId): void => {
     const employee = sp.web.lists
       .getByTitle("Employees")
       .items.getById(employeeId);
@@ -54,7 +54,7 @@ const Employees: FunctionComponent<ISpfxCaseProps> = (props) => {
     setEmployees(newEmployees);
   };
 
-   const addEmployee = (employeeName) => {
+   const addEmployee = (employeeName): void => {
      sp.web.lists.getByTitle("Employees").items.add({ name: employeeName });   
      fetchEmployeesData();
      setEmployeeName("");

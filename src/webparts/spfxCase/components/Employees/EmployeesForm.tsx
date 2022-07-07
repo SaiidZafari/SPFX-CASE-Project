@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from "react";
-import { FunctionComponent, useState, useEffect } from "react";
+import { FunctionComponent, useState } from "react";
 import styles from "../SpfxCase.module.scss";
 import { ISpfxCaseProps } from "../ISpfxCaseProps";
 
-import { ItemUpdateResultData, sp } from "sp-pnp-js";
+import { sp } from "sp-pnp-js";
 // import { spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
@@ -19,7 +19,7 @@ const EmployeesForm: FunctionComponent<ISpfxCaseProps> = (props) => {
   const [isVisible, setIsVisible] = useState(false);
   const [employeeName, setEmployeeName] = useState("");
   const [employeeIdTitle, setEmployeeIdTitle] = useState("");
-  const [employeeId, setEmployeeId] = useState(props.employeeId);
+  const [employeeId] = useState(props.employeeId);
 
   
 
@@ -96,7 +96,7 @@ export default EmployeesForm;
 
 
 
-function setEmployeeIdTitle(value: string): void {
-  throw new Error("Function not implemented.");
-}
+// function setEmployeeIdTitle(value: string): void {
+//   throw new Error("Function not implemented.");
+// }
 

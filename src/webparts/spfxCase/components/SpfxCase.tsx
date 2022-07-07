@@ -6,7 +6,7 @@
 import * as React from "react";
 import { FunctionComponent, useState, SetStateAction } from "react";
 import styles from "./SpfxCase.module.scss";
-import { ISpfxCaseProps, ISPEmployeeList } from "./ISpfxCaseProps";
+import { ISpfxCaseProps } from "./ISpfxCaseProps";
 import { PrimaryButton } from "@fluentui/react";
 import { SharedColors } from "@fluentui/theme";
 import Employees from "./Employees/Employees";
