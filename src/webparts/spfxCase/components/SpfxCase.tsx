@@ -1,12 +1,13 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/typedef */
-/* eslint-disable @microsoft/spfx/no-async-await */
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable react/jsx-no-bind */
+
 import * as React from "react";
 import { FunctionComponent, useState, SetStateAction } from "react";
 import styles from "./SpfxCase.module.scss";
-import { ISpfxCaseProps } from "./ISpfxCaseProps";
+import {
+  ISpfxCaseProps,
+  ISPEmployeeList,
+  ISPCarList,
+  ISPSaleList,
+} from "./ISpfxCaseProps";
 import { PrimaryButton } from "@fluentui/react";
 import { SharedColors } from "@fluentui/theme";
 import Employees from "./Employees/Employees";
@@ -36,18 +37,26 @@ const SpfxCase: FunctionComponent<ISpfxCaseProps> = (props) => {
   const [cars, setCars] = useState([]);
   const [sales, setSales] = useState([]);
 
-  const fetchEmployeesData = async () => {
-    const allItems = await sp.web.lists.getByTitle("Employees").items.getAll();
+
+
+  const fetchEmployeesData = async (): Promise<void> => {
+    const allItems: ISPEmployeeList[] = await sp.web.lists
+      .getByTitle("Employees")
+      .items.getAll();
     setEmployees(allItems);
   };
 
-  const fetchCarsData = async () => {
-    const allItems = await sp.web.lists.getByTitle("Carmodels").items.getAll();
+  const fetchCarsData = async (): Promise<void> => {
+    const allItems: ISPCarList[] = await sp.web.lists
+      .getByTitle("Carmodels")
+      .items.getAll();
     setCars(allItems);
   };
 
-  const fetchSalesData = async () => {
-    const allItems = await sp.web.lists.getByTitle("Sales").items.getAll();
+  const fetchSalesData = async (): Promise<void> => {
+    const allItems: ISPSaleList[] = await sp.web.lists
+      .getByTitle("Sales")
+      .items.getAll();
     setSales(allItems);
   };
 

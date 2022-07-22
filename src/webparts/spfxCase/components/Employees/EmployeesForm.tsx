@@ -29,10 +29,15 @@ const EmployeesForm: FunctionComponent<ISpfxCaseProps> = (props) => {
 
  
    
-   const updateEmployee = async (employeeId, employeeName, employeeIdTitle) => {
-     const list = sp.web.lists.getByTitle("Employees");    
-     
-      await list.items.getById(employeeId).update({
+   const updateEmployee = async (
+     employeeIdTitle,
+     employeeId,
+     employeeName
+   ): Promise<void> => {
+     // eslint-disable-next-line @typescript-eslint/typedef
+     const list = sp.web.lists.getByTitle("Employees");
+
+     await list.items.getById(employeeId).update({
        Title: employeeIdTitle,
        name: employeeName,
      });
@@ -95,8 +100,4 @@ const EmployeesForm: FunctionComponent<ISpfxCaseProps> = (props) => {
 export default EmployeesForm;
 
 
-
-// function setEmployeeIdTitle(value: string): void {
-//   throw new Error("Function not implemented.");
-// }
 

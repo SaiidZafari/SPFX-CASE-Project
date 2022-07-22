@@ -29,8 +29,6 @@ export interface ISPEmployeeLists {
 export interface ISPEmployeeList {
   Title: string;
   Id: number;
-  odata: [];
-  ID: number;
   name: string;
 }
 
